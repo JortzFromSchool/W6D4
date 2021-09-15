@@ -137,3 +137,302 @@ Migrating to CreateUsers (20210915184451)
   ↳ bin/rails:9
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started POST "/users?params[:name]=Farzam&params[:email]=farzam@gmail.com" for ::1 at 2021-09-15 15:07:32 -0400
+
+ActiveRecord::NoDatabaseError - FATAL:  database "first_routes_development" does not exist:
+
+  [1m[35m (117.1ms)[0m  [1m[35mCREATE DATABASE "first_routes_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (108.3ms)[0m  [1m[35mCREATE DATABASE "first_routes_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started POST "/users?params[:name]=Farzam&params[:email]=farzam@gmail.com" for ::1 at 2021-09-15 15:08:28 -0400
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development:
+
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7974280239715595190)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210915184451)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "users"[0m
+  ↳ db/migrate/20210915184451_create_users.rb:3
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(7974280239715595190)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7974280239715595190)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210915184451)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210915184451_create_users.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210915184451"]]
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-15 19:09:17.965956"], ["updated_at", "2021-09-15 19:09:17.965956"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7974280239715595190)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started POST "/users?params[:name]=Farzam&params[:email]=farzam@gmail.com" for ::1 at 2021-09-15 15:10:45 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/jortz/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{":name"=>"Farzam", ":email"=>"farzam@gmail.com"}}
+Completed 400 Bad Request in 108ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:20:in `user_params'
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?params[:user][:name]=Farzam&params[:user][:email]=farzam@gmail.com" for ::1 at 2021-09-15 15:12:12 -0400
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{":user"=>{":name"=>"Farzam", ":email"=>"farzam@gmail.com"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:20:in `user_params'
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?params[user][name]=Farzam&params[user][email]=farzam@gmail.com" for ::1 at 2021-09-15 15:12:49 -0400
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{"user"=>{"name"=>"Farzam", "email"=>"farzam@gmail.com"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:20:in `user_params'
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?params[user:][name]=Farzam&params[user:][email]=farzam@gmail.com" for ::1 at 2021-09-15 15:13:07 -0400
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{"user:"=>{"name"=>"Farzam", "email"=>"farzam@gmail.com"}}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:20:in `user_params'
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?params[:user][name]=Farzam&params[:user][email]=farzam@gmail.com" for ::1 at 2021-09-15 15:13:47 -0400
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{":user"=>{"name"=>"Farzam", "email"=>"farzam@gmail.com"}}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:20:in `user_params'
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?params[:user]=Farzam&params[:user]=farzam@gmail.com" for ::1 at 2021-09-15 15:13:57 -0400
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{":user"=>"farzam@gmail.com"}}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:20:in `user_params'
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?params[:user][name]=Farzam&params[:user][email]=farzam@gmail.com" for ::1 at 2021-09-15 15:14:26 -0400
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{":user"=>{"name"=>"Farzam", "email"=>"farzam@gmail.com"}}}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:20:in `user_params'
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?params[:user][:name]=Farzam&params[:user][:email]=farzam@gmail.com" for ::1 at 2021-09-15 15:14:41 -0400
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{":user"=>{":name"=>"Farzam", ":email"=>"farzam@gmail.com"}}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:20:in `user_params'
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?params[:user][name]=Farzam&params[:user][email]=farzam@gmail.com" for ::1 at 2021-09-15 15:17:21 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/jortz/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"params"=>{":user"=>{"name"=>"Farzam", "email"=>"farzam@gmail.com"}}}
+Completed 400 Bad Request in 70ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?:user[name]=Farzam&params[:user][email]=farzam@gmail.com" for ::1 at 2021-09-15 15:18:16 -0400
+Processing by UsersController#create as */*
+  Parameters: {":user"=>{"name"=>"Farzam"}, "params"=>{":user"=>{"email"=>"farzam@gmail.com"}}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: user:
+  app/controllers/users_controller.rb:7:in `create'
+
+Started POST "/users?user[name]=Farzam&user[email]=farzam@gmail.com" for ::1 at 2021-09-15 15:18:32 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Farzam", "email"=>"farzam@gmail.com"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Farzam"], ["email", "farzam@gmail.com"], ["created_at", "2021-09-15 19:18:32.872949"], ["updated_at", "2021-09-15 19:18:32.872949"]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/users?user[name]=Jon&user[email]=Jon@gmail.com&user[name]=Thugger&user[email]=thuggerthugger@email.com" for ::1 at 2021-09-15 15:19:49 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Thugger", "email"=>"thuggerthugger@email.com"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Thugger"], ["email", "thuggerthugger@email.com"], ["created_at", "2021-09-15 19:19:49.159274"], ["updated_at", "2021-09-15 19:19:49.159274"]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users?user[name]=Jon&user[email]=Jon@gmail.com" for ::1 at 2021-09-15 15:20:05 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Jon", "email"=>"Jon@gmail.com"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Jon"], ["email", "Jon@gmail.com"], ["created_at", "2021-09-15 19:20:05.545314"], ["updated_at", "2021-09-15 19:20:05.545314"]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users?user[name]=Evan&user[email]=Evan@gmail.com" for ::1 at 2021-09-15 15:20:52 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/jortz/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Evan", "email"=>"Evan@gmail.com"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Evan"], ["email", "Evan@gmail.com"], ["created_at", "2021-09-15 19:20:52.629365"], ["updated_at", "2021-09-15 19:20:52.629365"]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 96ms (Views: 0.3ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/users?user[name]=Evan" for ::1 at 2021-09-15 15:21:54 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Evan"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 422 Unprocessable Entity in 124ms (ActiveRecord: 0.4ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Email can't be blank:
+  app/controllers/users_controller.rb:9:in `create'
+
+Started POST "/users?user[name]=Evan" for ::1 at 2021-09-15 15:22:56 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/jortz/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Evan"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 422 Unprocessable Entity in 103ms (Views: 0.1ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/users/1" for ::1 at 2021-09-15 15:24:33 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/jortz/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - wrong number of arguments (given 1, expected 0):
+  app/controllers/users_controller.rb:18:in `show'
+
+Started GET "/users/1" for ::1 at 2021-09-15 15:25:29 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/jortz/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 200 OK in 101ms (Views: 0.4ms | ActiveRecord: 4.2ms)
+
+
+Started PATCH "/users/1?user[email]=farzam123@gmail.com" for ::1 at 2021-09-15 15:31:02 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/jortz/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"email"=>"farzam123@gmail.com"}, "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "email" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["email", "farzam123@gmail.com"], ["updated_at", "2021-09-15 19:31:03.521848"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 94ms (Views: 0.5ms | ActiveRecord: 4.1ms)
+
+
+Started DELETE "/users/2" for ::1 at 2021-09-15 15:33:22 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/jortz/.rbenv/versions/2.6.8/lib/ruby/gems/2.6.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:32
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 82ms (Views: 3.4ms | ActiveRecord: 6.0ms)
+
+
