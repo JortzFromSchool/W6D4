@@ -998,3 +998,305 @@ Processing by ArtworksController#destroy as */*
 Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 4.3ms)
 
 
+Started GET "/users" for ::1 at 2021-09-15 17:11:32 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development:
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7974280239715595190)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateArtworks (20210915200802)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (23.2ms)[0m  [1m[35mCREATE TABLE "artworks" ("id" bigserial primary key, "title" character varying NOT NULL, "img_url" character varying NOT NULL, "artist_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210915200802_create_artworks.rb:3
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_artworks_on_artist_id" ON "artworks"  ("artist_id")[0m
+  ↳ db/migrate/20210915200802_create_artworks.rb:10
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_artworks_on_img_url" ON "artworks"  ("img_url")[0m
+  ↳ db/migrate/20210915200802_create_artworks.rb:11
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_artworks_on_title_and_artist_id" ON "artworks"  ("title", "artist_id")[0m
+  ↳ db/migrate/20210915200802_create_artworks.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210915200802"]]
+  ↳ bin/rails:9
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateArtworkShares (20210915201219)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "artwork_shares" ("id" bigserial primary key, "artwork_id" integer NOT NULL, "viewer_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210915201219_create_artwork_shares.rb:3
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_artwork_shares_on_artwork_id" ON "artwork_shares"  ("artwork_id")[0m
+  ↳ db/migrate/20210915201219_create_artwork_shares.rb:9
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_artwork_shares_on_viewer_id" ON "artwork_shares"  ("viewer_id")[0m
+  ↳ db/migrate/20210915201219_create_artwork_shares.rb:10
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_artwork_shares_on_artwork_id_and_viewer_id" ON "artwork_shares"  ("artwork_id", "viewer_id")[0m
+  ↳ db/migrate/20210915201219_create_artwork_shares.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210915201219"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(7974280239715595190)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/users" for ::1 at 2021-09-15 17:12:28 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as */*
+  [1m[36mUser Load (8.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 29ms (Views: 1.5ms | ActiveRecord: 9.7ms)
+
+
+  [1m[35m (8.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mArtworkShare Load (0.5ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "thuggerthugger"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "thuggerthugger"], ["created_at", "2021-09-16 13:12:09.836967"], ["updated_at", "2021-09-16 13:12:09.836967"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Yeezy"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "Yeezy"], ["created_at", "2021-09-16 13:12:09.842488"], ["updated_at", "2021-09-16 13:12:09.842488"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "cincectaples"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "cincectaples"], ["created_at", "2021-09-16 13:12:09.843880"], ["updated_at", "2021-09-16 13:12:09.843880"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mArtwork Create (0.8ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "img_url", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Millions"], ["img_url", "www.google.com"], ["artist_id", 1], ["created_at", "2021-09-16 13:12:09.879106"], ["updated_at", "2021-09-16 13:12:09.879106"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mArtwork Create (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "img_url", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Donda"], ["img_url", "www.bing.com"], ["artist_id", 2], ["created_at", "2021-09-16 13:12:09.881963"], ["updated_at", "2021-09-16 13:12:09.881963"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mArtwork Create (0.2ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "img_url", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Vince Staples"], ["img_url", "www.duckduckgo.com"], ["artist_id", 3], ["created_at", "2021-09-16 13:12:09.883691"], ["updated_at", "2021-09-16 13:12:09.883691"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:33
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mArtworkShare Create (0.7ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 1], ["viewer_id", 2], ["created_at", "2021-09-16 13:12:09.891886"], ["updated_at", "2021-09-16 13:12:09.891886"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:34
+  [1m[36mArtwork Load (0.2ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:34
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:34
+  [1m[36mArtworkShare Create (0.2ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 2], ["viewer_id", 1], ["created_at", "2021-09-16 13:12:09.894713"], ["updated_at", "2021-09-16 13:12:09.894713"]]
+  ↳ db/seeds.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:35
+  [1m[36mArtwork Load (0.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[36mArtworkShare Create (0.1ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 1], ["viewer_id", 3], ["created_at", "2021-09-16 13:12:09.896800"], ["updated_at", "2021-09-16 13:12:09.896800"]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:35
+Started POST "/artwork_shares?artwork_share[artwork_id]=1&artwork_share[viewer_id]=2" for ::1 at 2021-09-16 09:13:20 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworkSharesController#create as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"1", "viewer_id"=>"2"}}
+Completed 400 Bad Request in 7ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork:
+  app/controllers/artwork_shares_controller.rb:22:in `artwork_share_params'
+  app/controllers/artwork_shares_controller.rb:3:in `create'
+
+Started POST "/artwork_shares?artwork_share[artwork_id]=1&artwork_share[viewer_id]=2" for ::1 at 2021-09-16 09:14:30 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworkSharesController#create as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"1", "viewer_id"=>"2"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtwork Load (19.1ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtworkShare Create (7.3ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 1], ["viewer_id", 2], ["created_at", "2021-09-16 13:14:30.385883"], ["updated_at", "2021-09-16 13:14:30.385883"]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 37.5ms)
+
+
+
+ActiveRecord::RecordNotUnique - PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_artwork_shares_on_artwork_id_and_viewer_id"
+DETAIL:  Key (artwork_id, viewer_id)=(1, 2) already exists.
+: INSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id":
+  app/controllers/artwork_shares_controller.rb:5:in `create'
+
+Started POST "/artwork_shares?artwork_share[artwork_id]=2&artwork_share[viewer_id]=2" for ::1 at 2021-09-16 09:14:48 -0400
+Processing by ArtworkSharesController#create as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"2", "viewer_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[36mArtworkShare Create (0.2ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 2], ["viewer_id", 2], ["created_at", "2021-09-16 13:14:48.572697"], ["updated_at", "2021-09-16 13:14:48.572697"]]
+  ↳ app/controllers/artwork_shares_controller.rb:5
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artwork_shares_controller.rb:5
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 5.3ms)
+
+
+Started DELETE "/artwork_shares/5" for ::1 at 2021-09-16 09:15:29 -0400
+Processing by ArtworkSharesController#destroy as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mArtworkShare Load (14.4ms)[0m  [1m[34mSELECT  "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/artwork_shares_controller.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artwork_shares_controller.rb:14
+  [1m[36mArtworkShare Destroy (0.2ms)[0m  [1m[31mDELETE FROM "artwork_shares" WHERE "artwork_shares"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/artwork_shares_controller.rb:14
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artwork_shares_controller.rb:14
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/users/1/artworks" for ::1 at 2021-09-16 09:30:43 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"1"}
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.0ms)
+
+
+
+NameError - uninitialized constant ArtworksController::ArtworkShares:
+  app/controllers/artworks_controller.rb:5:in `index'
+
+Started GET "/users/1/artworks" for ::1 at 2021-09-16 09:31:31 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mArtworkShare Load (17.2ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:6
+  [1m[36mArtwork Load (4.7ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 1], ["LIMIT", 11]]
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 20.9ms)
+
+
+  [1m[36mCACHE Artwork Load (0.0ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 1], ["LIMIT", 11]]
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Artwork Load (0.0ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 1], ["LIMIT", 11]]
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+NoMethodError - undefined method `<<' for #<Artwork::ActiveRecord_Relation:0x00007fffd7993688>:
+  app/controllers/artworks_controller.rb:7:in `block in index'
+  app/controllers/artworks_controller.rb:6:in `index'
+
+Started GET "/users/1/artworks" for ::1 at 2021-09-16 09:33:06 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mArtworkShare Load (0.5ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:6
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 1], ["LIMIT", 11]]
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 4.3ms)
+
+
+  [1m[36mCACHE Artwork Load (0.0ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 1], ["LIMIT", 11]]
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Artwork Load (0.0ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1 LIMIT $2[0m  [["artist_id", 1], ["LIMIT", 11]]
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+
+NoMethodError - undefined method `<<' for #<Artwork::ActiveRecord_Relation:0x00007fffd0279390>:
+  app/controllers/artworks_controller.rb:7:in `block in index'
+  app/controllers/artworks_controller.rb:6:in `index'
+
+Started GET "/users/1/artworks" for ::1 at 2021-09-16 09:33:41 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mArtworkShare Load (0.6ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:6
+  [1m[36mArtwork Load (0.7ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:7
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/artworks_controller.rb:7
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 7.7ms)
+
+
+
+NoMethodError - undefined method `all' for #<Array:0x00007fffd541c3c8>
+Did you mean?  all?:
+  app/controllers/artworks_controller.rb:9:in `index'
+
+Started GET "/users/1/artworks" for ::1 at 2021-09-16 09:35:35 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/farzam/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mArtworkShare Load (0.5ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:6
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 1]]
+  ↳ app/controllers/artworks_controller.rb:7
+  [1m[36mArtwork Load (0.3ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/artworks_controller.rb:7
+Completed 200 OK in 28ms (Views: 0.6ms | ActiveRecord: 6.7ms)
+
+
