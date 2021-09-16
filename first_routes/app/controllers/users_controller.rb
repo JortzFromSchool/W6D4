@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
-    def index 
-        render json: User.all
+    def index
+        if params[:query]
+            wildstring = params[:query]
+            user = User.where('username LIKE ?', "%#{wildstring}%" )
+            render json: user
+        else
+            render json: User.all
+        end
     end
 
     def create
@@ -39,7 +45,4 @@ class UsersController < ApplicationController
         params.require(:user).permit(:username)
     end
 
-    # def update_params
-    #     params.require(:user)
-    # end
 end
